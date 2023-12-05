@@ -18,5 +18,6 @@
 
     <jsp:include page="/WEB-INF/pages/footer.jsp" />
 </main>
+<script src="${pageContext.request.contextPath}/Scripts/form-validation.js"></script>
 </body>
 </html>
