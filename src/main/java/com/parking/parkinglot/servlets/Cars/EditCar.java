@@ -1,4 +1,4 @@
-package com.parking.parkinglot;
+package com.parking.parkinglot.servlets.Cars;
 
 import com.parking.parkinglot.common.CarDto;
 import com.parking.parkinglot.common.UserDto;
@@ -38,7 +38,7 @@ public class EditCar extends HttpServlet {
         CarDto car = carsBean.findById(carId);
         request.setAttribute("car", car);
 
-        request.getRequestDispatcher("/WEB-INF/pages/editCar.jsp").forward(request,response);
+        request.getRequestDispatcher("/WEB-INF/pages/cars/editCar.jsp").forward(request,response);
     }
 
     @Override

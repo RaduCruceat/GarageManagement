@@ -22,7 +22,7 @@
                         </li>
                     </c:if>
 
-                    <c:if test="${pageContext.request.isUserInRole('READ_CARS')}">
+                    <c:if test="${pageContext.request.isUserInRole('READ_USERS')}">
                         <li class="nav-item">
                             <a class="nav-link ${pageContext.request.requestURI.substring(pageContext.request.requestURI.lastIndexOf("/")) eq '/users.jsp' ? ' active' : ''}"
                                aria-current="page" href="${pageContext.request.contextPath}/Users">Users</a>

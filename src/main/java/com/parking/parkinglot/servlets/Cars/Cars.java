@@ -1,4 +1,4 @@
-package com.parking.parkinglot;
+package com.parking.parkinglot.servlets.Cars;
 
 import com.parking.parkinglot.common.CarDto;
 import com.parking.parkinglot.ejb.CarsBean;
@@ -20,6 +20,7 @@ import java.util.List;
 public class Cars extends HttpServlet {
     @Inject
     CarsBean carsBean;
+    private static final int TOTAL_PARKING_SPOTS = 10; // Total parking spots available
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse
@@ -27,8 +28,12 @@ public class Cars extends HttpServlet {
         List<CarDto> cars= carsBean.findAllCars();
         request.setAttribute("cars",cars);
 
-        request.getRequestDispatcher("/WEB-INF/pages/Cars.jsp").forward(request,response);
-        request.setAttribute("numberOfFreeParkingSpots",10);
+        int numberOfOccupiedSpots = cars.size();
+        int numberOfFreeParkingSpots = TOTAL_PARKING_SPOTS - numberOfOccupiedSpots;
+
+        request.setAttribute("numberOfFreeParkingSpots", numberOfFreeParkingSpots);
+        request.getRequestDispatcher("/WEB-INF/pages/cars/Cars.jsp").forward(request,response);
+
     }
 
     @Override

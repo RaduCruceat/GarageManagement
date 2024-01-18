@@ -72,5 +72,76 @@ public class UserBean {
                         .getResultList();
         return usernames;
     }
+    public UserDto findUserById(Long userId) {
+        LOG.info("findUserById");
+        User user = entityManager.find(User.class, userId);
+        if (user == null) {
+            return null;
+        }
+        return new UserDto(user.getId(), user.getUsername(),user.getEmail(),user.getPassword());
+    }
+    public void updateUser(Long userId, String username, String email, String password, String[] userGroups) {
+        LOG.info("updateUser");
+        User user = entityManager.find(User.class, userId);
+        if (user != null) {
+            user.setUsername(username);
+            user.setEmail(email);
+            if (password != null && !password.isEmpty()) {
+                user.setPassword(passwordBean.convertToSha256(password));
+            }
+            entityManager.merge(user);
+
+            updateGroupsForUser(username, userGroups);
+        } else {
+            throw new RuntimeException("User not found with ID: " + userId);
+        }
+    }
+
+    private void updateGroupsForUser(String username, String[] groups) {
+        // Remove existing groups
+        entityManager.createQuery("DELETE FROM UserGroup g WHERE g.username = :username")
+                .setParameter("username", username)
+                .executeUpdate();
+
+        // Add new groups
+        for (String group : groups) {
+            UserGroup userGroup = new UserGroup();
+            userGroup.setUsername(username);
+            userGroup.setUserGroup(group);
+            entityManager.persist(userGroup);
+        }
+    }
+    public List<String> getUserGroupsByUsername(String username) {
+        LOG.info("getUserGroupsByUsername");
+        TypedQuery<String> query = entityManager.createQuery(
+                        "SELECT ug.userGroup FROM UserGroup ug WHERE ug.username = :username", String.class)
+                .setParameter("username", username);
+        return query.getResultList();
+    }
+
+
+    public List<String> getAllUserGroups() {
+        LOG.info("getAllUserGroups");
+        TypedQuery<String> query = entityManager.createQuery("SELECT DISTINCT ug.userGroup FROM UserGroup ug", String.class);
+        return query.getResultList();
+    }
+    public void updateUserGroups(String username, List<String> groups) {
+        LOG.info("updateUserGroups for user: " + username);
+        // Remove existing groups
+        entityManager.createQuery("DELETE FROM UserGroup ug WHERE ug.username = :username")
+                .setParameter("username", username)
+                .executeUpdate();
+
+        // Assign new groups
+        for (String group : groups) {
+            UserGroup newUserGroup = new UserGroup();
+            newUserGroup.setUsername(username);
+            newUserGroup.setUserGroup(group);
+            entityManager.persist(newUserGroup);
+        }
+    }
+
+
+
 
 }

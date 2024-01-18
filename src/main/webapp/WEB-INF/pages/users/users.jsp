@@ -21,6 +21,11 @@
                     <div class="col">
                             ${user.email}
                     </div>
+                    <c:if test="${pageContext.request.isUserInRole('WRITE_USERS')}">
+                        <div class="col">
+                            <a class="btn btn-secondary" href="${pageContext.request.contextPath}/EditUser?id=${user.id}">Edit User</a>
+                        </div>
+                    </c:if>
                 </div>
             </c:forEach>
         </div>

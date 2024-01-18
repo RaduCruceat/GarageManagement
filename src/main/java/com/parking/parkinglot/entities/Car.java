@@ -1,6 +1,7 @@
 package com.parking.parkinglot.entities;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Size;
 
 import java.util.Collection;
 
@@ -11,7 +12,7 @@ public class Car {
     @GeneratedValue
     private Long id;
 
-    @OneToOne(mappedBy = "car", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+
     public CarPhoto getPhoto() {
         return photo;
     }
@@ -20,7 +21,7 @@ public class Car {
         this.photo = photo;
     }
 
-    @OneToOne
+    @OneToOne(mappedBy = "car", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
     private CarPhoto photo;
 
     public void setId(Long id) {
@@ -32,6 +33,8 @@ public class Car {
     }
 
     @Basic
+    @Size(min = 3, max = 100)
+    @Column(unique = true, nullable = false, length = 100)
     private String licensePlate;
 
     public String getLicensePlate() {
@@ -43,6 +46,8 @@ public class Car {
     }
 
     @Basic
+    @Size(min = 3, max = 100)
+    @Column(unique = true, nullable = false, length = 100)
     private String parkingSpot;
 
     public String getParkingSpot() {

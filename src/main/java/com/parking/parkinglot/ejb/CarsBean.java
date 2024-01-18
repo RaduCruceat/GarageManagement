@@ -2,7 +2,6 @@ package com.parking.parkinglot.ejb;
 
 import com.parking.parkinglot.common.CarDto;
 
-import com.parking.parkinglot.Cars;
 import com.parking.parkinglot.common.CarPhotoDto;
 import com.parking.parkinglot.entities.Car;
 import com.parking.parkinglot.entities.CarPhoto;
@@ -13,7 +12,6 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;
 
-import java.security.cert.Extension;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;

@@ -19,6 +19,7 @@ public class User {
     }
 
     @Basic
+    @Column(unique = true, nullable = false, length = 100)
     private String username;
 
     public String getUsername() {
@@ -28,6 +29,7 @@ public class User {
     public void setUsername(String username) {
         this.username = username;
     }
+    @Column(unique = true, nullable = false, length = 100)
     private String email;
     private String password;
 
