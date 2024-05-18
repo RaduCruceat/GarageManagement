@@ -27,6 +27,7 @@ A Garage Management Application that allows users to manage cars, owners, and ad
 - JavaScript
 - JSP (JavaServer Pages)
 
-<img src="https://github.com/RaduCruceat/GarageManagement/blob/master/src/main/java/com/parking/parkinglot/CarsPageScreenshot.png" alt="Cars Page">
-<img src="https://github.com/RaduCruceat/GarageManagement/blob/master/src/main/java/com/parking/parkinglot/UsersPageScreenshot.png" alt="Users Page">
+<div style="display: flex; justify-content: space-between;">
+<img src="https://github.com/RaduCruceat/GarageManagement/blob/master/src/main/java/com/parking/parkinglot/CarsPageScreenshot.png" alt="Cars Page"  width="400">
+<img src="https://github.com/RaduCruceat/GarageManagement/blob/master/src/main/java/com/parking/parkinglot/UsersPageScreenshot.png" alt="Users Page"  width="400">
   
