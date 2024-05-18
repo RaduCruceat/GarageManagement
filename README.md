@@ -20,12 +20,12 @@ A Garage Management Application that allows users to manage cars, owners, and ad
 
   ## Technologies Used
 
-- Java
-- Gradle
-- GlassFish
-- MySQL Database
-- JavaScript
-- JSP (JavaServer Pages)
+  - Java
+  - Gradle
+  - GlassFish
+  - MySQL Database
+  - JavaScript
+  - JSP (JavaServer Pages)
 
 <div style="display: flex; justify-content: space-between;">
 <img src="https://github.com/RaduCruceat/GarageManagement/blob/master/src/main/java/com/parking/parkinglot/CarsPageScreenshot.png" alt="Cars Page"  width="400">
