@@ -18,7 +18,7 @@ A Garage Management Application that allows users to manage cars, owners, and ad
 - User Authentication:
   - Login Page
 
-  ## Technologies Used
+## Technologies Used
 
   - Java
   - Gradle
