@@ -9,8 +9,8 @@ A Garage Management Application that allows users to manage cars, owners, and ad
   - Picture
   - Owner
   - Spot Location
-- Add/Edit Owners
-- Add/Edit Admins with Permissions:
+- Add/Edit Car's owners
+- Add/Edit Users with Permissions:
   - Edit Cars
   - View Cars
   - Edit Users
